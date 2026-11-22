@@ -1,0 +1,52 @@
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //1. Vuvejdanevna spisuka i ostanalite vhodni danni
+            List<int> numbers = Console.ReadLine().Split().Select(int.Parse).ToList();
+
+            int numberToAdd = int.Parse(Console.ReadLine());
+            int numberToRemove = int.Parse(Console.ReadLine());
+            int indexToRemove = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"Nachalen spisuk: {string.Join(" ", numbers)}");
+
+            //2. Dobevqne na chisloto v kraq na spisuka
+            numbers.Add(numberToAdd);
+            Console.WriteLine($"sled AGE {string .Join(", ", numbers)}");
+
+            //3. Vmukvane na sushtoto chislo v nachaloto (na indeks 0)
+            numbers.Insert(0, numberToAdd);
+            Console.WriteLine($"sled Insert: {string.Join(" ", numbers)}");
+
+            //4. Premahvane po stoinost chrez Remove()
+            if (numbers.Remove(numberToRemove))
+            {
+                Console.WriteLine($"sled Remove: {string.Join(" ", numbers)}");
+            }
+            else
+            {
+                Console.WriteLine("Chisloto lipsva v spisuka.");
+            }
+
+            //5. proverka za validen indeks i premahvane crez RemoveAt()
+            if(indexToRemove >= 0 && indexToRemove < numbers.Count)
+            {
+                numbers.RemoveAt(indexToRemove);
+                Console.WriteLine($"sled RemoveAt: {string.Join(" ", numbers)}");
+            }
+            else
+            {
+                Console.WriteLine("nevaliden indeks.");
+            }
+
+            //6. Izvejdane na broq elementi i obhojdane s cikul for
+            Console.WriteLine($"Kraen broi elementi: {numbers.Count}");
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                Console.WriteLine($"{i}. {numbers[i]}");
+            }
+
+        }
+    }
+}

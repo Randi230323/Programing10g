@@ -1,0 +1,54 @@
+        static void Main(string[] args)
+        {
+            // 1. Прочитане и разделяне на входа
+            List<string> textNumbers = Console.ReadLine().Split(' ').ToList();
+
+            // 2. Преобразуване в цели числа
+            List<int> numbers = new List<int>();
+
+            foreach (string number in textNumbers)
+            {
+                numbers.Add(int.Parse(number));
+            }
+
+            // 3. Извеждане на всяко число на отделен ред
+            foreach (int number in numbers)
+            {
+                Console.WriteLine(number);
+            }
+
+            // 4. Брой на всички числа
+            Console.WriteLine("Брой на всички числа: " + numbers.Count);
+
+            // 5. Филтриране на положителните, четните и уникалните числа
+            List<int> filteredNumbers = new List<int>();
+
+            foreach (int number in numbers)
+            {
+                if (number > 0 && number % 2 == 0 &&
+                    !filteredNumbers.Contains(number))
+                {
+                    filteredNumbers.Add(number);
+                }
+            }
+
+            // 6. Извеждане на избраните числа
+            Console.WriteLine("Избрани числа: " +
+                string.Join(", ", filteredNumbers));
+
+            // 7. Брой и сума на филтрираните числа
+            int sum = 0;
+
+            foreach (int number in filteredNumbers)
+            {
+                sum += number;
+            }
+
+            Console.WriteLine("Брой на избраните числа: " +
+                filteredNumbers.Count);
+
+            Console.WriteLine("Сума на избраните числа: " + sum);
+        }
+    }
+    
+}
